@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="canvas-container" style="float: left">
+      <canvas id="canvas" width="800px" height="600px"></canvas>
+    </div>
+    <script src="./wordcloud.js"></script>
+    <script src="../simple/data.js"></script>
+    <script>
+      console.log(WordCloud);
+      baseData.sort((a, b) => b.fontSize - a.fontSize);
+      console.log(baseData)
+      var wordFreqData = baseData.map(i => [i.text, i.fontSize]);
+      
+      wordFreqData.sort((a, b) => b.fontSize - a.fontSize);
+      console.log(wordFreqData)
+      var canvas = document.getElementById("canvas");
+      var options = {
+        list: wordFreqData, //或者[['各位观众',45],['词云', 21],['来啦!!!',13]],只要格式满足这样都可以
+        gridSize: 1, // 密集程度 数字越小越密集
+        weightFactor: 1, // 字体大小=原始大小*weightFactor
+        maxFontSize: 60, //最大字号
+        minFontSize: 14, //最小字号
+        fontWeight: "normal", //字体粗细
+        fontFamily: "Times, serif", // 字体
+        color: "random-light", // 字体颜色 'random-dark' 或者 'random-light'
+        backgroundColor: "#333", // 背景颜色
+        rotateRatio: 0, // 字体倾斜(旋转)概率，1代表总是倾斜(旋转)
+        rotationSteps: 2,
+        ellipticity: 1,
+      };
+      //生成
+      console.log(options);
+      WordCloud(canvas, options);
+    </script>
+  </body>
+</html>

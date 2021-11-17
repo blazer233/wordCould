@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Demo</title>
+  </head>
+  <body>
+    <canvas id="canvas" style="background-color: antiquewhite"></canvas>
+    <script src="./data.js"></script>
+    <script src="./tool.js"></script>
+    <script>
+      const paintSpiral = (
+        size,
+        getPosition,
+        baseData = [],
+      ) => {
+        baseData.sort((a, b) => b.fontSize - a.fontSize);
+        const ctx = canvas.getContext("2d");
+        canvas.width = size[0];
+        canvas.height = size[1];
+        const points = []; // 所有放置点
+        let maxDelta = Math.sqrt(size[0] * size[0] + size[1] * size[1]), // 最大半径（勾股定理）
+          t = 1, // 阿基米德弧度
+          dxdy,
+          dx, // x坐标
+          dy; // y坐标
+        // 通过每次增加的步长固定为1，实际步长为 step * 1，来获取下一个放置点
+        do {
+          dxdy = getPosition(t);
+          dx = dxdy[0];
+          dy = dxdy[1];
+          x = dx + size[0] / 2;
+          y = dy + size[1] / 2;
+          t++;
+          if (Math.min(Math.abs(dx), Math.abs(dy)) >= maxDelta) break; // (dx, dy)距离中心超过maxDelta，跳出螺旋返回false
+          points.push({ dx, dy, x, y });
+        } while (true);
+        baseData.forEach((item, i) => {
+          item._height = item.fontSize * 1.2;
+          points[i] = { ...points[i], ...item };
+        });
+        let last = [0, 0];
+        let lastOne = [];
+        // 将放置点绘制出来
+        for (let i = 0; i < points.length; i++) {
+          let point = points[i];
+          ctx.beginPath();
+          /*画线*/
+          ctx.moveTo(last[0] + size[0] / 2, last[1] + size[1] / 2);
+          ctx.lineTo(point.x, point.y);
+          last = [point.dx, point.dy];
+          ctx.stroke(); //显示连线
+          ctx.arc(point.x, point.y, 2, 0, 2 * Math.PI, false);
+          point._width = ctx.measureText(point.text).width;
+          lastOne.push(point);
+          /*画文字*/
+          ctx.fillStyle = point.color;
+          ctx.font = point.fontSize + "px Arial";
+          ctx.fillText(point.text || '', point.x, point.y);
+        }
+      };
+      const getPosition = archimedeanSpiral(CANVAS_SIZE, { step: 1, b: 3 });
+      paintSpiral(CANVAS_SIZE, getPosition, baseData);
+    </script>
+  </body>
+</html>

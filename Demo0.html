@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="canvas" style="background-color: antiquewhite"></canvas>
+    <script src="./data.js"></script>
+    <script src="./tool.js"></script>
+    <script>
+      function paintSpiral(size, getPosition) {
+        const points = []; // 所有放置点
+        let dxdy,
+          maxDelta = Math.sqrt(size[0] * size[0] + size[1] * size[1]), // 最大半径
+          t = 1, // 阿基米德弧度
+          index = 0, // 当前位置序号
+          dx, // x坐标
+          dy; // y坐标F
+        // 通过每次增加的步长固定为1，实际步长为 step * 1，来获取下一个放置点
+        do {
+          dxdy = getPosition(t);
+          dx = dxdy[0];
+          dy = dxdy[1];
+          t++;
+          if (Math.min(Math.abs(dx), Math.abs(dy)) >= maxDelta) break; // (dx, dy)距离中心超过maxDelta，跳出螺旋返回false
+          points.push({ dx, dy });
+        } while (true);
+        // 初始化画布
+
+        canvas.width = size[0];
+        canvas.height = size[1];
+        const ctx = canvas.getContext("2d");
+        ctx.strokeStyle = "black";
+        let last = [0, 0];
+        // 将放置点绘制出来
+        points.forEach((point, index) => {
+          ctx.beginPath();
+          ctx.moveTo(last[0] + size[0] / 2, last[1] + size[1] / 2);
+          ctx.lineTo(point.dx + size[0] / 2, point.dy + size[1] / 2);
+          last = [point.dx, point.dy];
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(
+            point.dx + size[0] / 2,
+            point.dy + size[1] / 2,
+            2,
+            0,
+            2 * Math.PI,
+            false
+          );
+        });
+        document.body.append(canvas);
+      }
+      const getPosition = archimedeanSpiral(CANVAS_SIZE, { step: 0.1, b: 1 });
+      paintSpiral(CANVAS_SIZE, getPosition, 1);
+    </script>
+  </body>
+</html>

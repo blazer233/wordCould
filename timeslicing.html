@@ -83,6 +83,7 @@
         console.log(lastOne);
       }
       function handleArray(ctx, lastOne, points, baseData, i) {
+        console.time("start");
         let point = baseData[i];
         ctx.fillStyle = point.color;
         ctx.font = point.fontSize + "px Arial";
@@ -107,6 +108,7 @@
         ctx.fillText(point.text, point.x, point.y + point._height);
         // /*画框*/
         // ctx.strokeRect(point.x, point.y, point._width, point._height);
+        console.timeEnd("start");
       }
       const getPosition = archimedeanSpiral(CANVAS_SIZE, { step: 0.1, b: 1.2 });
       timeSlice(paintSpiral, CANVAS_SIZE, getPosition, baseData)();

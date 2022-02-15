@@ -4,49 +4,49 @@ const size = [
   { fontSize: 36, color: "gray" },
   { fontSize: 41, color: "pink" },
   { fontSize: 55, color: "peru" },
-  { fontSize: 60, color: "yellow" }
+  { fontSize: 60, color: "black" }
 ];
 const baseData = [
   {
-    text: "螺蛳粉",
+    text: "苏州",
     ...size[0]
   },
   {
-    text: "鸭血粉丝",
+    text: "苏州",
     ...size[0]
   },
   {
-    text: "甜不辣",
-    ...size[0]
-  },
-
-  {
-    text: "重庆小面",
+    text: "佛山",
     ...size[0]
   },
 
   {
-    text: "肉夹馍",
+    text: "长沙",
     ...size[0]
   },
 
   {
-    text: "炸酱面",
+    text: "天津",
     ...size[0]
   },
 
   {
-    text: "沙县小吃",
+    text: "武汉",
+    ...size[0]
+  },
+
+  {
+    text: "重庆",
     ...size[1]
   },
 
   {
-    text: "烤冷面",
+    text: "西安",
     ...size[1]
   },
 
   {
-    text: "臭豆腐",
+    text: "杭州",
     ...size[1]
   },
 
@@ -56,143 +56,143 @@ const baseData = [
   },
 
   {
-    text: "酸辣粉",
+    text: "石家庄",
     ...size[1]
   },
 
   {
-    text: "冒菜",
+    text: "广州",
     ...size[1]
   },
 
   {
-    text: "驴打滚",
+    text: "深圳",
     ...size[2]
   },
 
   {
-    text: "板栗",
+    text: "上海",
     ...size[2]
   },
 
   {
-    text: "醪糟",
+    text: "北京",
     ...size[2]
   },
 
   {
-    text: "螺蛳粉",
+    text: "苏州",
     ...size[2]
   },
   {
-    text: "鸭血粉丝",
+    text: "苏州",
     ...size[2]
   },
   {
-    text: "甜不辣",
+    text: "佛山",
     ...size[2]
   },
 
   {
-    text: "重庆小面",
+    text: "长沙",
     ...size[3]
   },
 
   {
-    text: "肉夹馍",
+    text: "天津",
     ...size[3]
   },
 
   {
-    text: "炸酱面",
+    text: "武汉",
     ...size[3]
   },
 
   {
-    text: "沙县小吃",
+    text: "重庆",
     ...size[3]
   },
 
   {
-    text: "烤冷面",
+    text: "西安",
     ...size[3]
   },
 
   {
-    text: "臭豆腐",
+    text: "杭州",
     ...size[3]
   },
 
   {
-    text: "牛肉面",
+    text: "银川",
     ...size[5]
   },
 
   {
-    text: "酸辣粉",
+    text: "石家庄",
     ...size[4]
   },
 
   {
-    text: "冒菜",
+    text: "广州",
     ...size[4]
   },
 
   {
-    text: "驴打滚",
+    text: "深圳",
     ...size[4]
   },
 
   {
-    text: "板栗",
+    text: "上海",
     ...size[4]
   },
 
   {
-    text: "醪糟",
+    text: "北京",
     ...size[4]
   },
 
   {
-    text: "螺蛳粉",
+    text: "苏州",
     ...size[0]
   },
   {
-    text: "鸭血粉丝",
+    text: "苏州",
     ...size[0]
   },
   {
-    text: "甜不辣",
-    ...size[0]
-  },
-
-  {
-    text: "重庆小面",
+    text: "佛山",
     ...size[0]
   },
 
   {
-    text: "肉夹馍",
+    text: "长沙",
     ...size[0]
   },
 
   {
-    text: "炸酱面",
+    text: "天津",
     ...size[0]
   },
 
   {
-    text: "沙县小吃",
+    text: "武汉",
+    ...size[0]
+  },
+
+  {
+    text: "重庆",
     ...size[1]
   },
 
   {
-    text: "烤冷面",
+    text: "西安",
     ...size[1]
   },
 
   {
-    text: "臭豆腐",
+    text: "杭州",
     ...size[1]
   },
 
@@ -202,100 +202,100 @@ const baseData = [
   },
 
   {
-    text: "酸辣粉",
+    text: "石家庄",
     ...size[1]
   },
 
   {
-    text: "冒菜",
+    text: "广州",
     ...size[1]
   },
 
   {
-    text: "驴打滚",
+    text: "深圳",
     ...size[2]
   },
 
   {
-    text: "板栗",
+    text: "上海",
     ...size[2]
   },
 
   {
-    text: "醪糟",
+    text: "北京",
     ...size[2]
   },
 
   {
-    text: "螺蛳粉",
+    text: "苏州",
     ...size[2]
   },
   {
-    text: "鸭血粉丝",
+    text: "苏州",
     ...size[2]
   },
   {
-    text: "甜不辣",
+    text: "佛山",
     ...size[2]
   },
 
   {
-    text: "重庆小面",
+    text: "长沙",
     ...size[3]
   },
 
   {
-    text: "肉夹馍",
+    text: "天津",
     ...size[3]
   },
 
   {
-    text: "炸酱面",
+    text: "武汉",
     ...size[3]
   },
 
   {
-    text: "沙县小吃",
+    text: "重庆",
     ...size[3]
   },
 
   {
-    text: "烤冷面",
+    text: "西安",
     ...size[3]
   },
 
   {
-    text: "臭豆腐",
+    text: "杭州",
     ...size[3]
   },
 
   {
-    text: "钵钵鸡真好吃",
+    text: "成都",
     ...size[4]
   },
 
   {
-    text: "酸辣粉",
+    text: "石家庄",
     ...size[4]
   },
 
   {
-    text: "冒菜",
+    text: "广州",
     ...size[4]
   },
 
   {
-    text: "驴打滚",
+    text: "深圳",
     ...size[4]
   },
 
   {
-    text: "板栗",
+    text: "上海",
     ...size[4]
   },
 
   {
-    text: "醪糟",
+    text: "北京",
     ...size[4]
   }
 ];

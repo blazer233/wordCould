@@ -11,7 +11,7 @@ export default function handleArray(ctx, lastOne, points, baseData, i, isArea) {
     while (
       !lastOne.every(one => hitTest(point, one) && !outLineTest(point, size))
     ) {
-      point = Object.assign(point, points[s]);
+      point = { ...point, ...points[s] };
       s++;
     }
   } else {

@@ -12,6 +12,6 @@ export default function timeSlice(gen, ...arg) {
       res = g.next();
     } while (res.done !== true && performance.now() - start < 16);
     if (res.done) return; //generator 已经迭代完了，所有分割的任务都完成了
-    setTimeout(next, 100); // 将剩余的任务放在下一次 宏任务 执行
+    requestIdleCallback(next);
   };
 }

@@ -16,7 +16,6 @@ export default function* paintSpiral(dom, config = CONFIG) {
   mock.forEach((item, i) => {
     item.text = config.showIndex ? `${i}${item.text}` : item.text;
     item._height = item.fontSize * 1.2;
-    // item = { ...item, ...points[i] };
     item = Object.assign(item, points[i]);
   });
   let lastOne = [];

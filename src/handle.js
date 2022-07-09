@@ -1,5 +1,4 @@
-import { hitTest, outLineTest } from "./tool_config";
-import { CANVAS_SIZE as size } from "./tool_config";
+import { hitTest, outLineTest, CANVAS_SIZE as size } from "./tool_config";
 
 export default function handleArray(ctx, lastOne, points, baseData, i, isArea) {
   let point = baseData[i];

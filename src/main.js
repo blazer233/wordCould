@@ -3,9 +3,9 @@ import handleArray from "./handle";
 import {
   getAllPoints,
   drawSpiral,
+  CONFIG,
   CANVAS_SIZE as size,
-  MOCK_DATA as mock,
-  CONFIG
+  MOCK_DATA as mock
 } from "./tool_config";
 
 export default function* paintSpiral(dom, config = CONFIG) {

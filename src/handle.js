@@ -22,5 +22,5 @@ export default function handleArray(ctx, lastOne, points, baseData, i, isArea) {
   // /*画文字*/
   ctx.fillText(point.text, point.x, point.y + point._height);
   // /*画框*/
-  isArea && ctx.strokeRect(point.x, point.y, point._width, point._height);
+  isArea && ctx.strokeRect(point.x, point.y + 6, point._width, point._height);
 }

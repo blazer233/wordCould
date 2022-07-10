@@ -1,8 +1,20 @@
 export const CONFIG = {
-  large: { step: 0.1, b: 1.2 },
+  large: { step: 0.1, b: 1 },
   showIndex: false,
   showSpiral: false,
   isArea: false
+};
+
+export const handleTask = cb => {
+  if (typeof Promise !== "undefined") {
+    return queueMicrotask(cb);
+  }
+  if (typeof MessageChannel !== "undefined") {
+    const { port1, port2 } = new MessageChannel();
+    port1.onmessage = cb;
+    return port2.postMessage(null);
+  }
+  return setTimeout(cb);
 };
 
 /** 阿基米德螺线, 用于初始化位置函数, 调用后返回一个获取位置的函数
@@ -113,300 +125,32 @@ const size = [
   { fontSize: 55, color: "peru" },
   { fontSize: 60, color: "black" }
 ];
+const areas = [
+  "苏州",
+  "佛山",
+  "长沙",
+  "天津",
+  "武汉",
+  "重庆",
+  "西安",
+  "石家庄",
+  "杭州",
+  "惠州",
+  "广州",
+  "深圳",
+  "上海",
+  "北京"
+];
 
+function getData(res = []) {
+  size.forEach(i => {
+    areas.forEach(text => {
+      res.push({ ...i, text });
+    });
+  });
+  return res;
+}
 /**
  * 数据
  */
-export const MOCK_DATA = [
-  {
-    text: "苏州",
-    ...size[0]
-  },
-  {
-    text: "苏州",
-    ...size[0]
-  },
-  {
-    text: "佛山",
-    ...size[0]
-  },
-
-  {
-    text: "长沙",
-    ...size[0]
-  },
-
-  {
-    text: "天津",
-    ...size[0]
-  },
-
-  {
-    text: "武汉",
-    ...size[0]
-  },
-
-  {
-    text: "重庆",
-    ...size[1]
-  },
-
-  {
-    text: "西安",
-    ...size[1]
-  },
-
-  {
-    text: "杭州",
-    ...size[1]
-  },
-
-  {
-    text: "惠州",
-    ...size[1]
-  },
-
-  {
-    text: "石家庄",
-    ...size[1]
-  },
-
-  {
-    text: "广州",
-    ...size[1]
-  },
-
-  {
-    text: "深圳",
-    ...size[2]
-  },
-
-  {
-    text: "上海",
-    ...size[2]
-  },
-
-  {
-    text: "北京",
-    ...size[2]
-  },
-
-  {
-    text: "苏州",
-    ...size[2]
-  },
-  {
-    text: "苏州",
-    ...size[2]
-  },
-  {
-    text: "佛山",
-    ...size[2]
-  },
-
-  {
-    text: "长沙",
-    ...size[3]
-  },
-
-  {
-    text: "天津",
-    ...size[3]
-  },
-
-  {
-    text: "武汉",
-    ...size[3]
-  },
-
-  {
-    text: "重庆",
-    ...size[3]
-  },
-
-  {
-    text: "西安",
-    ...size[3]
-  },
-
-  {
-    text: "杭州",
-    ...size[3]
-  },
-
-  {
-    text: "银川",
-    ...size[5]
-  },
-
-  {
-    text: "石家庄",
-    ...size[4]
-  },
-
-  {
-    text: "广州",
-    ...size[4]
-  },
-
-  {
-    text: "深圳",
-    ...size[4]
-  },
-
-  {
-    text: "上海",
-    ...size[4]
-  },
-
-  {
-    text: "北京",
-    ...size[4]
-  },
-
-  {
-    text: "苏州",
-    ...size[0]
-  },
-  {
-    text: "苏州",
-    ...size[0]
-  },
-  {
-    text: "佛山",
-    ...size[0]
-  },
-
-  {
-    text: "长沙",
-    ...size[0]
-  },
-
-  {
-    text: "天津",
-    ...size[0]
-  },
-
-  {
-    text: "武汉",
-    ...size[0]
-  },
-
-  {
-    text: "重庆",
-    ...size[1]
-  },
-
-  {
-    text: "西安",
-    ...size[1]
-  },
-
-  {
-    text: "杭州",
-    ...size[1]
-  },
-
-  {
-    text: "惠州",
-    ...size[1]
-  },
-
-  {
-    text: "石家庄",
-    ...size[1]
-  },
-
-  {
-    text: "广州",
-    ...size[1]
-  },
-
-  {
-    text: "深圳",
-    ...size[2]
-  },
-
-  {
-    text: "上海",
-    ...size[2]
-  },
-
-  {
-    text: "北京",
-    ...size[2]
-  },
-
-  {
-    text: "苏州",
-    ...size[2]
-  },
-  {
-    text: "苏州",
-    ...size[2]
-  },
-  {
-    text: "佛山",
-    ...size[2]
-  },
-
-  {
-    text: "长沙",
-    ...size[3]
-  },
-
-  {
-    text: "天津",
-    ...size[3]
-  },
-
-  {
-    text: "武汉",
-    ...size[3]
-  },
-
-  {
-    text: "重庆",
-    ...size[3]
-  },
-
-  {
-    text: "西安",
-    ...size[3]
-  },
-
-  {
-    text: "杭州",
-    ...size[3]
-  },
-
-  {
-    text: "成都",
-    ...size[4]
-  },
-
-  {
-    text: "石家庄",
-    ...size[4]
-  },
-
-  {
-    text: "广州",
-    ...size[4]
-  },
-
-  {
-    text: "深圳",
-    ...size[4]
-  },
-
-  {
-    text: "上海",
-    ...size[4]
-  },
-
-  {
-    text: "北京",
-    ...size[4]
-  }
-];
+export const MOCK_DATA = getData();

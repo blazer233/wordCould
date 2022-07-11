@@ -1,4 +1,4 @@
-import { handleTask } from "../tool_config";
+import { handleAsyncTask as task } from "../tool_config";
 export default function timeSlice(gen, ...arg) {
   // 传入参数生成 generator
   var g = gen(...arg);
@@ -11,8 +11,8 @@ export default function timeSlice(gen, ...arg) {
       // 迭代一次
       // 可以理解为 执行一个任务
       res = g.next();
-    } while (res.done !== true && performance.now() - start < 16);
-    if (res.done) return; //generator 已经迭代完了，所有分割的任务都完成了
-    handleTask(next);
+    } while (!res.done && performance.now() - start < 16);
+    if (res.done) return;
+    task(next);
   };
 }

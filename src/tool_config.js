@@ -2,10 +2,10 @@ export const CONFIG = {
   large: { step: 0.1, b: 1 },
   showIndex: false,
   showSpiral: false,
-  isArea: false
+  isArea: false,
 };
 
-export const handleTask = cb => {
+export const handleAsyncTask = cb => {
   if (typeof Promise !== "undefined") {
     return queueMicrotask(cb);
   }
@@ -14,7 +14,7 @@ export const handleTask = cb => {
     port1.onmessage = cb;
     return port2.postMessage(null);
   }
-  return setTimeout(cb);
+  return setTimeout(cb, 200);
 };
 
 /** 阿基米德螺线, 用于初始化位置函数, 调用后返回一个获取位置的函数
@@ -123,7 +123,7 @@ const size = [
   { fontSize: 36, color: "gray" },
   { fontSize: 41, color: "pink" },
   { fontSize: 55, color: "peru" },
-  { fontSize: 60, color: "black" }
+  { fontSize: 60, color: "black" },
 ];
 const areas = [
   "苏州",
@@ -139,7 +139,15 @@ const areas = [
   "广州",
   "深圳",
   "上海",
-  "北京"
+  "北京",
+  "徐州",
+  "海口",
+  "秦皇岛",
+  "苏州",
+  "佛山",
+  "长沙",
+  "天津",
+  "武汉",
 ];
 
 function getData(res = []) {

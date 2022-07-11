@@ -5,7 +5,7 @@ import {
   drawSpiral,
   CONFIG,
   CANVAS_SIZE as size,
-  MOCK_DATA as mock
+  MOCK_DATA as mock,
 } from "../tool_config";
 
 function* paintSpiral(dom, config = CONFIG) {
@@ -15,7 +15,7 @@ function* paintSpiral(dom, config = CONFIG) {
   const points = getAllPoints(size, config.large); // 所有放置点
   mock.forEach((item, i) => {
     item.text = config.showIndex ? `${i}${item.text}` : item.text;
-    item._height = item.fontSize * 1.2;
+    item._height = item.fontSize * 1;
     item = Object.assign(item, points[i]);
   });
   let lastOne = [];

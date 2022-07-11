@@ -4,7 +4,7 @@ import {
   drawSpiral,
   CONFIG,
   CANVAS_SIZE as size,
-  MOCK_DATA as mock
+  MOCK_DATA as mock,
 } from "../tool_config";
 import { schedule } from "./index";
 

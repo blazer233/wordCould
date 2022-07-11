@@ -6,8 +6,8 @@ export const CONFIG = {
 };
 
 export const handleAsyncTask = cb => {
-  if (typeof Promise !== "undefined") {
-    return queueMicrotask(cb);
+  if (typeof requestAnimationFrame !== "undefined") {
+    return requestAnimationFrame(cb);
   }
   if (typeof MessageChannel !== "undefined") {
     const { port1, port2 } = new MessageChannel();

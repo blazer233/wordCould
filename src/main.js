@@ -1,2 +1,2 @@
-// import "./generate/App";
-import "./fre-schedule/App";
+import "./generate/App";
+// import "./fre-schedule/App";
